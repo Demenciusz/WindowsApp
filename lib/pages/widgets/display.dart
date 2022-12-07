@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Display extends StatefulWidget {
-  const Display({required this.value});
+  const Display({super.key, required this.value});
   final int value;
 
   @override
@@ -16,7 +16,7 @@ class _DisplayState extends State<Display> {
       height: 120,
       decoration: BoxDecoration(color: Colors.blue.shade200),
       child: Text(
-        '${widget.value.toString().padLeft(4, '0')}',
+        widget.value.toString().padLeft(3, '0'),
         style: const TextStyle(
           fontSize: 80,
         ),
