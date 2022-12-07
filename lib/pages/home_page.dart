@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:windows_app/pages/widgets/button_widget.dart';
+import 'package:windows_app/pages/widgets/display.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+  int i = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -10,6 +12,9 @@ class HomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Display(
+            value: i,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
