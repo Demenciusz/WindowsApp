@@ -18,10 +18,18 @@ class _ButtonWidgetState extends State<ButtonWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.fun,
-      child: SizedBox(
-        width: 50,
-        height: 50,
-        child: Text(widget.widgetText),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Container(
+          decoration: const BoxDecoration(color: Colors.blue),
+          width: 150,
+          height: 120,
+          child: Text(
+            widget.widgetText,
+            style: const TextStyle(fontSize: 80),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }

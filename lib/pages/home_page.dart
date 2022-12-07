@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:windows_app/pages/widgets/button_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,7 +8,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [],
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ButtonWidget(
+                fun: () {},
+                widgetText: '+',
+              ),
+              ButtonWidget(
+                fun: () {},
+                widgetText: 'RST',
+              )
+            ],
+          )
+        ],
       ),
     );
   }
