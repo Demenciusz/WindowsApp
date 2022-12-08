@@ -10,7 +10,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int i = 1;
+  final List<Widget> list =
+      List<Widget>.generate(999, (index) => Display(value: index));
+  late FixedExtentScrollController controller;
+  @override
+  void initState() {
+    super.initState();
+    controller = FixedExtentScrollController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +25,15 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Display(
-            value: i,
+          SizedBox(
+            width: 200,
+            height: 500,
+            child: ListWheelScrollView(
+              controller: controller,
+              physics: const FixedExtentScrollPhysics(),
+              itemExtent: 160,
+              children: list,
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +41,9 @@ class _HomePageState extends State<HomePage> {
               ButtonWidget(
                 fun: () {
                   setState(() {
-                    i++;
+                    controller.animateToItem(controller.selectedItem + 1,
+                        duration: const Duration(milliseconds: 100),
+                        curve: Curves.easeInOut);
                   });
                 },
                 widgetText: '+',
@@ -35,7 +51,10 @@ class _HomePageState extends State<HomePage> {
               ButtonWidget(
                 fun: () {
                   setState(() {
-                    i = 0;
+                    controller.animateToItem(0,
+                        duration: Duration(
+                            milliseconds: controller.selectedItem * 50),
+                        curve: Curves.easeInOut);
                   });
                 },
                 widgetText: 'RST',
